@@ -6,6 +6,10 @@ var volume=document.querySelector('#slider')
 var volume_input=document.querySelector('#volume')
 window.addEventListener("load", function() {
 	console.log("Good job opening the window");
+	video.autoPlay=false;
+	video.loop=false;
+	console.log("Auto play is set to false");
+	console.log("Loop is set to false");
 });
 
 // Play Button
@@ -17,7 +21,7 @@ document.querySelector("#play").addEventListener("click", function() {
 
 function updateVolumeInfo(){
 	console.log("Current Volume: " + volume.value);
-	volume_input.innerHTML=volume.value
+	volume_input.innerHTML=volume.value+"%"
 }
 
 // Pause Button
@@ -28,7 +32,7 @@ document.querySelector("#pause").addEventListener("click", function(){
 
 // Slow Down
 document.querySelector("#slower").addEventListener("click", function(){
-	console.log("Slower");
+	console.log("Slow down video");
 	if (video.playbackRate>0){
 		video.playbackRate -= 0.1;
 	}
@@ -38,7 +42,7 @@ document.querySelector("#slower").addEventListener("click", function(){
 //Speed Up 
 //what does it mean by within 5 digits of 100% again
 document.querySelector("#faster").addEventListener("click", function(){
-	console.log("Faster");
+	console.log("Speed up video");
 	if (video.playbackRate>0){
 		video.playbackRate += 0.1;
 	}
@@ -59,14 +63,18 @@ document.querySelector("#skip").addEventListener("click", function(){
 //Mute
 document.querySelector("#mute").addEventListener("click", function(){
 	console.log("Mute");
+	video.muted=true;
 	volume.value=0
-	volume_input.innerHTML=0
+	volume_input.innerHTML=0+"%"
 })
 
 //Volume Slider
 document.querySelector("#slider").addEventListener("click", function(){
 	console.log("Change Volume");
-	volume_input.innerHTML=volume.value
+	volume_input.innerHTML=volume.value+"%"
+	video.volume=volume.value/100
+	console.log("Current Volume: " + volume.value);
+
 })
 
 //Styled
