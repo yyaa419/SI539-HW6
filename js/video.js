@@ -61,11 +61,21 @@ document.querySelector("#skip").addEventListener("click", function(){
 })
 
 //Mute
+
 document.querySelector("#mute").addEventListener("click", function(){
-	console.log("Mute");
-	video.muted=true;
-	volume.value=0
-	volume_input.innerHTML=0+"%"
+	var isMuted=video.muted
+	var muteBottomName=document.querySelector("#mute")
+	if (isMuted==true){
+		muteBottomName.textContent="Mute"
+		console.log("Unmute");
+		video.muted=false;
+	}
+	else{
+		muteBottomName.textContent="Unmute"
+		console.log("Mute")
+		video.muted=true
+	}
+
 })
 
 //Volume Slider
